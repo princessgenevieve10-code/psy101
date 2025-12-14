@@ -12,17 +12,13 @@
         }
 
         :root {
-            --primary-color: #0a0a0a;
+            --primary-color: #1a1a1a;
             --secondary-color: #666666;
             --bg-color: #ffffff;
-            --off-white: #fafafa;
-            --border-color: #e8e8e8;
+            --off-white: #f8f8f8;
+            --border-color: #e0e0e0;
             --accent-color: #000000;
-            --shadow-sm: 0 2px 8px rgba(0,0,0,0.04);
-            --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
-            --shadow-lg: 0 12px 40px rgba(0,0,0,0.12);
-            --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            --transition-bounce: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         body {
@@ -31,7 +27,6 @@
             background-color: var(--bg-color);
             line-height: 1.7;
             overflow-x: hidden;
-            scroll-behavior: smooth;
         }
 
         .navbar {
@@ -39,19 +34,12 @@
             top: 0;
             left: 0;
             right: 0;
-            background-color: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(20px) saturate(180%);
-            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            background-color: var(--bg-color);
             padding: 1.5rem 3rem;
             z-index: 999;
             border-bottom: 1px solid var(--border-color);
             opacity: 0;
             animation: slideDown 0.6s ease forwards;
-            transition: var(--transition-smooth);
-        }
-
-        .navbar.scrolled {
-            box-shadow: var(--shadow-md);
         }
 
         @keyframes slideDown {
@@ -69,20 +57,15 @@
         .site-logo {
             font-size: 0.9rem;
             font-weight: 600;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
             color: var(--primary-color);
             text-transform: uppercase;
-            transition: var(--transition-smooth);
-        }
-
-        .site-logo:hover {
-            letter-spacing: 2px;
         }
 
         .nav-menu {
             list-style: none;
             display: flex;
-            gap: 2.5rem;
+            gap: 2rem;
         }
 
         .nav-link {
@@ -90,51 +73,22 @@
             color: var(--secondary-color);
             font-size: 0.85rem;
             letter-spacing: 0.5px;
-            font-weight: 500;
-            transition: var(--transition-smooth);
-            position: relative;
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary-color);
-            transition: width 0.3s ease;
+            font-weight: 400;
+            transition: var(--transition);
         }
 
         .nav-link:hover {
             color: var(--primary-color);
         }
 
-        .nav-link:hover::after {
-            width: 100%;
-        }
-
         .hero {
-            min-height: 65vh;
+            min-height: 60vh;
             display: flex;
             align-items: center;
             justify-content: center;
             margin-top: 70px;
-            padding: 5rem 3rem;
-            background: linear-gradient(135deg, var(--off-white) 0%, #ffffff 100%);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -20%;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(0,0,0,0.03) 0%, transparent 70%);
-            border-radius: 50%;
+            padding: 4rem 3rem;
+            background-color: var(--off-white);
         }
 
         .hero-content {
@@ -143,8 +97,6 @@
             opacity: 0;
             transform: translateY(30px);
             animation: fadeInUp 1s ease 0.3s forwards;
-            position: relative;
-            z-index: 1;
         }
 
         @keyframes fadeInUp {
@@ -155,21 +107,17 @@
         }
 
         .site-title {
-            font-size: 4.5rem;
-            letter-spacing: -3px;
+            font-size: 4rem;
+            letter-spacing: -2px;
             font-weight: 300;
             margin-bottom: 1.5rem;
             line-height: 1.1;
             color: var(--primary-color);
-            background: linear-gradient(135deg, #000000 0%, #333333 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
         }
 
         .site-subtitle {
-            font-size: 1.2rem;
-            letter-spacing: 0.5px;
+            font-size: 1.1rem;
+            letter-spacing: 0;
             color: var(--secondary-color);
             font-weight: 400;
         }
@@ -177,20 +125,19 @@
         .cards-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 5rem 3rem;
+            padding: 4rem 3rem;
         }
 
         .concept-card {
             background-color: var(--bg-color);
             cursor: pointer;
-            transition: var(--transition-smooth);
-            margin-bottom: 5rem;
+            transition: all 0.3s ease;
+            margin-bottom: 4rem;
             opacity: 0;
-            transform: translateY(40px);
+            transform: translateY(30px);
             animation: fadeInUp 0.8s ease forwards;
             border-bottom: 1px solid var(--border-color);
-            padding-bottom: 5rem;
-            position: relative;
+            padding-bottom: 4rem;
         }
 
         .concept-card:nth-child(1) { animation-delay: 0.1s; }
@@ -204,61 +151,39 @@
         }
 
         .concept-card:hover {
-            transform: translateX(15px);
+            transform: translateX(10px);
         }
 
         .card-layout {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 5rem;
+            gap: 4rem;
             align-items: start;
         }
 
         .card-image {
             width: 100%;
-            height: 550px;
+            height: 500px;
             background: var(--off-white);
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: var(--transition-smooth);
+            transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
-            border-radius: 4px;
-            box-shadow: var(--shadow-sm);
-        }
-
-        .card-image::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.1) 100%);
-            opacity: 0;
-            transition: var(--transition-smooth);
-        }
-
-        .concept-card:hover .card-image::after {
-            opacity: 1;
         }
 
         .card-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
-            filter: grayscale(90%) contrast(1.1);
-        }
-
-        .concept-card:hover .card-image {
-            box-shadow: var(--shadow-lg);
+            transition: all 0.6s ease;
+            filter: grayscale(100%);
         }
 
         .concept-card:hover .card-image img {
-            transform: scale(1.08);
-            filter: grayscale(0%) contrast(1);
+            transform: scale(1.05);
+            filter: grayscale(0%);
         }
 
         .card-content {
@@ -268,61 +193,48 @@
         .card-meta {
             font-size: 0.75rem;
             color: var(--secondary-color);
-            margin-bottom: 1.2rem;
+            margin-bottom: 1rem;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
-            font-weight: 600;
+            letter-spacing: 1px;
+            font-weight: 500;
         }
 
         .card-title {
-            font-size: 2.8rem;
-            letter-spacing: -1.5px;
-            margin-bottom: 1.8rem;
+            font-size: 2.5rem;
+            letter-spacing: -1px;
+            margin-bottom: 1.5rem;
             font-weight: 300;
             line-height: 1.2;
-            transition: var(--transition-smooth);
+            transition: color 0.3s ease;
         }
 
         .concept-card:hover .card-title {
             color: var(--secondary-color);
-            letter-spacing: -2px;
         }
 
         .card-preview {
-            font-size: 1.05rem;
-            line-height: 1.9;
+            font-size: 1rem;
+            line-height: 1.8;
             color: var(--secondary-color);
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
 
         .read-more {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
+            display: inline-block;
             color: var(--primary-color);
             text-decoration: none;
             font-size: 0.85rem;
             font-weight: 600;
-            letter-spacing: 0.8px;
+            letter-spacing: 0.5px;
             text-transform: uppercase;
             border-bottom: 2px solid var(--primary-color);
-            padding-bottom: 6px;
-            transition: var(--transition-smooth);
-        }
-
-        .read-more::after {
-            content: '→';
-            transition: transform 0.3s ease;
+            padding-bottom: 4px;
+            transition: all 0.3s ease;
         }
 
         .read-more:hover {
             border-bottom-color: var(--secondary-color);
             color: var(--secondary-color);
-            gap: 0.8rem;
-        }
-
-        .read-more:hover::after {
-            transform: translateX(5px);
         }
 
         .modal-overlay {
@@ -337,28 +249,27 @@
             align-items: center;
             justify-content: center;
             padding: 2rem;
-            transition: all 0.5s ease;
+            transition: background-color 0.4s ease;
             backdrop-filter: blur(0px);
         }
 
         .modal-overlay.active {
             display: flex;
-            background-color: rgba(0, 0, 0, 0.88);
-            backdrop-filter: blur(8px);
+            background-color: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(5px);
         }
 
         .modal {
             background-color: var(--bg-color);
-            max-width: 950px;
+            max-width: 900px;
             width: 100%;
             max-height: 90vh;
             overflow-y: auto;
             position: relative;
-            transform: scale(0.92) translateY(30px);
+            transform: scale(0.95) translateY(20px);
             opacity: 0;
-            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-            box-shadow: 0 30px 90px rgba(0,0,0,0.4);
-            border-radius: 8px;
+            transition: all 0.4s ease;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
         }
 
         .modal-overlay.active .modal {
@@ -368,96 +279,71 @@
 
         .modal-header-image {
             width: 100%;
-            height: 420px;
+            height: 400px;
             background: var(--off-white);
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
             overflow: hidden;
-            border-radius: 8px 8px 0 0;
         }
 
         .modal-header-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: grayscale(30%);
+            filter: grayscale(50%);
         }
 
         .modal-close {
             position: absolute;
             top: 1.5rem;
             right: 1.5rem;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
+            background: var(--bg-color);
             color: var(--primary-color);
-            border: none;
-            width: 44px;
-            height: 44px;
+            border: 1px solid var(--border-color);
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             font-size: 1.5rem;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: var(--transition-smooth);
+            transition: all 0.3s ease;
             z-index: 10;
-            box-shadow: var(--shadow-md);
         }
 
         .modal-close:hover {
             background: var(--primary-color);
             color: var(--bg-color);
-            transform: rotate(90deg) scale(1.1);
+            transform: rotate(90deg);
         }
 
         .resource-links {
             display: flex;
             gap: 1rem;
-            margin: 2.5rem 0;
+            margin: 2rem 0;
             flex-wrap: wrap;
         }
 
         .resource-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
+            display: inline-block;
             background: transparent;
             color: var(--primary-color);
-            padding: 1rem 2rem;
+            padding: 0.8rem 1.5rem;
             text-decoration: none;
             font-size: 0.85rem;
-            letter-spacing: 0.8px;
+            letter-spacing: 0.5px;
             font-weight: 600;
             text-transform: uppercase;
-            transition: var(--transition-smooth);
+            transition: all 0.3s ease;
             border: 2px solid var(--primary-color);
-            border-radius: 4px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .resource-link::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: var(--primary-color);
-            transition: left 0.4s ease;
-            z-index: -1;
-        }
-
-        .resource-link:hover::before {
-            left: 0;
         }
 
         .resource-link:hover {
+            background: var(--primary-color);
             color: var(--bg-color);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
         }
 
         .resource-link.secondary {
@@ -465,22 +351,19 @@
             color: var(--secondary-color);
         }
 
-        .resource-link.secondary::before {
-            background: var(--secondary-color);
-        }
-
         .resource-link.secondary:hover {
+            background: var(--secondary-color);
             color: var(--bg-color);
         }
 
         .modal-content {
-            padding: 3.5rem 4.5rem;
+            padding: 3rem 4rem;
             overflow-y: auto;
         }
 
         .modal-title {
-            font-size: 2.8rem;
-            letter-spacing: -1.5px;
+            font-size: 2.5rem;
+            letter-spacing: -1px;
             margin-bottom: 0.5rem;
             font-weight: 300;
             line-height: 1.2;
@@ -489,130 +372,56 @@
         .modal-meta {
             font-size: 0.75rem;
             color: var(--secondary-color);
-            margin-bottom: 3rem;
+            margin-bottom: 2.5rem;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
-            font-weight: 600;
+            letter-spacing: 1px;
+            font-weight: 500;
         }
 
         .modal-section {
-            margin-bottom: 3rem;
+            margin-bottom: 2.5rem;
         }
 
         .modal-section h3 {
             font-size: 0.85rem;
-            letter-spacing: 0.8px;
+            letter-spacing: 0.5px;
             text-transform: uppercase;
-            margin-bottom: 1.2rem;
+            margin-bottom: 1rem;
             color: var(--primary-color);
             font-weight: 600;
         }
 
         .modal-section p {
-            font-size: 1.05rem;
-            line-height: 1.9;
+            font-size: 1rem;
+            line-height: 1.8;
             color: var(--secondary-color);
         }
 
-        .video-modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0, 0, 0, 0);
-            z-index: 2000;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
-            transition: all 0.5s ease;
-            backdrop-filter: blur(0px);
-        }
-
-        .video-modal-overlay.active {
-            display: flex;
-            background-color: rgba(0, 0, 0, 0.95);
-            backdrop-filter: blur(12px);
-        }
-
-        .video-container {
-            position: relative;
-            max-width: 1100px;
-            width: 100%;
-            background: #000;
-            border-radius: 12px;
-            overflow: hidden;
-            transform: scale(0.9);
-            opacity: 0;
-            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-            box-shadow: 0 30px 100px rgba(0,0,0,0.7);
-        }
-
-        .video-modal-overlay.active .video-container {
-            transform: scale(1);
-            opacity: 1;
-        }
-
-        .video-container video {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .video-close {
-            position: absolute;
-            top: -4rem;
-            right: 0;
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
-            color: white;
-            border: 2px solid rgba(255, 255, 255, 0.8);
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            font-size: 2rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition-smooth);
-            z-index: 10;
-        }
-
-        .video-close:hover {
-            background: white;
-            color: black;
-            transform: rotate(90deg) scale(1.1);
-            border-color: white;
-        }
-
         .footer {
-            background: linear-gradient(135deg, var(--primary-color) 0%, #2a2a2a 100%);
+            background-color: var(--primary-color);
             color: var(--bg-color);
             text-align: center;
-            padding: 4rem 2rem;
-            margin-top: 5rem;
+            padding: 3rem 2rem;
+            margin-top: 4rem;
             font-size: 0.9rem;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
         }
 
         .footer p {
             margin: 0.5rem 0;
-            opacity: 0.9;
         }
 
         .modal::-webkit-scrollbar {
-            width: 10px;
+            width: 8px;
         }
 
         .modal::-webkit-scrollbar-track {
-            background: #f5f5f5;
+            background: #f1f1f1;
         }
 
         .modal::-webkit-scrollbar-thumb {
             background: var(--secondary-color);
-            border-radius: 5px;
+            border-radius: 4px;
         }
 
         .modal::-webkit-scrollbar-thumb:hover {
@@ -622,7 +431,7 @@
         @media (max-width: 1024px) {
             .card-layout {
                 grid-template-columns: 1fr;
-                gap: 2.5rem;
+                gap: 2rem;
             }
             .modal-header-image {
                 height: 350px;
@@ -633,8 +442,11 @@
         }
 
         @media (max-width: 768px) {
+            .cards-container {
+                padding: 2rem 1.5rem;
+            }
             .site-title {
-                font-size: 2.8rem;
+                font-size: 2.5rem;
             }
             .card-title {
                 font-size: 2rem;
@@ -658,21 +470,13 @@
                 padding: 3rem 1.5rem;
             }
             .card-image {
-                height: 400px;
-            }
-            .cards-container {
-                padding: 3rem 1.5rem;
+                height: 350px;
             }
             .resource-links {
                 flex-direction: column;
             }
             .resource-link {
                 text-align: center;
-                justify-content: center;
-            }
-            .video-close {
-                top: 1rem;
-                right: 1rem;
             }
         }
     </style>
@@ -705,7 +509,7 @@
                     <div class="card-meta">Module 5 | Learning Through Association</div>
                     <h2 class="card-title">Classical Conditioning</h2>
                     <p class="card-preview">Classical conditioning is a learning process where a neutral stimulus becomes associated with a meaningful stimulus, resulting in a learned response. Pavlov's famous experiment with dogs demonstrated this principle...</p>
-                    <span class="read-more">Read Full Article</span>
+                    <span class="read-more">Read Full Article →</span>
                 </div>
             </div>
         </div>
@@ -716,7 +520,7 @@
                     <div class="card-meta">Module 6 | Memory Formation</div>
                     <h2 class="card-title">Anterograde Amnesia</h2>
                     <p class="card-preview">Anterograde amnesia is a condition where a person loses the ability to form new memories after brain trauma or injury. The hippocampus plays a crucial role in this process...</p>
-                    <span class="read-more">Read Full Article</span>
+                    <span class="read-more">Read Full Article →</span>
                 </div>
                 <div class="card-image">
                     <img src="img/Memory Loss.jpg" alt="Anterograde Amnesia">
@@ -733,7 +537,7 @@
                     <div class="card-meta">Module 7 | Relationships & Connection</div>
                     <h2 class="card-title">Adult Attachment Style</h2>
                     <p class="card-preview">The adult attachment style, particularly anxious attachment, is characterized by fear of abandonment and need for reassurance. Early childhood experiences shape how we form relationships...</p>
-                    <span class="read-more">Read Full Article</span>
+                    <span class="read-more">Read Full Article →</span>
                 </div>
             </div>
         </div>
@@ -744,7 +548,7 @@
                     <div class="card-meta">Module 8 | Positive Stress</div>
                     <h2 class="card-title">Eustress</h2>
                     <p class="card-preview">Eustress refers to the positive form of stress that can motivate and improve performance. Unlike distress, eustress occurs when challenges feel manageable and can enhance our abilities...</p>
-                    <span class="read-more">Read Full Article</span>
+                    <span class="read-more">Read Full Article →</span>
                 </div>
                 <div class="card-image">
                     <img src="img/eustress.jpg" alt="Eustress">
@@ -761,7 +565,7 @@
                     <div class="card-meta">Module 9/10 | Understanding Fear</div>
                     <h2 class="card-title">Specific Phobia</h2>
                     <p class="card-preview">A specific phobia is an intense, irrational fear of a particular object or situation. These phobias often develop through classical conditioning and can significantly impact daily life...</p>
-                    <span class="read-more">Read Full Article</span>
+                    <span class="read-more">Read Full Article →</span>
                 </div>
             </div>
         </div>
@@ -786,7 +590,7 @@
                 </div>
                 <div class="resource-links">
                     <a href="https://en.wikipedia.org/wiki/Classical_conditioning" target="_blank" class="resource-link">Wikipedia Article</a>
-                    <a href="#" onclick="openVideo(event)" class="resource-link secondary">Watch Video</a>
+                    <a href="img/cardboard.mp4" target="_blank" class="resource-link secondary">Watch Video</a>
                 </div>
             </div>
         </div>
@@ -891,17 +695,6 @@
         </div>
     </div>
 
-    <!-- Video Modal -->
-    <div class="video-modal-overlay" id="videoModal" onclick="closeVideo(event)">
-        <div class="video-container" onclick="event.stopPropagation()">
-            <button class="video-close" onclick="closeVideo(event)">×</button>
-            <video id="videoPlayer" controls>
-                <source src="img/cardboard.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-        </div>
-    </div>
-
     <footer class="footer">
         <p>&copy; 2025 Psychology Insights | Princess Genevieve B. Eugenio</p>
         <p>PSY101 with Prof. Malamuth</p>
@@ -918,7 +711,7 @@
             event.stopPropagation();
             const modal = document.getElementById(modalId);
             const modalElement = modal.querySelector('.modal');
-            modalElement.style.transform = 'scale(0.92) translateY(30px)';
+            modalElement.style.transform = 'scale(0.95) translateY(20px)';
             modalElement.style.opacity = '0';
             
             setTimeout(() => {
@@ -926,42 +719,15 @@
                 document.body.style.overflow = 'auto';
                 modalElement.style.transform = '';
                 modalElement.style.opacity = '';
-            }, 400);
-        }
-
-        function openVideo(event) {
-            event.preventDefault();
-            const videoModal = document.getElementById('videoModal');
-            const videoPlayer = document.getElementById('videoPlayer');
-            videoModal.classList.add('active');
-            videoPlayer.play();
-        }
-
-        function closeVideo(event) {
-            event.stopPropagation();
-            const videoModal = document.getElementById('videoModal');
-            const videoPlayer = document.getElementById('videoPlayer');
-            const videoContainer = videoModal.querySelector('.video-container');
-            
-            videoContainer.style.transform = 'scale(0.9)';
-            videoContainer.style.opacity = '0';
-            
-            setTimeout(() => {
-                videoModal.classList.remove('active');
-                videoPlayer.pause();
-                videoPlayer.currentTime = 0;
-                videoContainer.style.transform = '';
-                videoContainer.style.opacity = '';
-            }, 400);
+            }, 300);
         }
 
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Escape') {
-                // Close regular modal
                 const activeModal = document.querySelector('.modal-overlay.active');
                 if (activeModal) {
                     const modalElement = activeModal.querySelector('.modal');
-                    modalElement.style.transform = 'scale(0.92) translateY(30px)';
+                    modalElement.style.transform = 'scale(0.95) translateY(20px)';
                     modalElement.style.opacity = '0';
                     
                     setTimeout(() => {
@@ -969,14 +735,7 @@
                         document.body.style.overflow = 'auto';
                         modalElement.style.transform = '';
                         modalElement.style.opacity = '';
-                    }, 400);
-                }
-                
-                // Close video modal
-                const videoModal = document.querySelector('.video-modal-overlay.active');
-                if (videoModal) {
-                    const fakeEvent = { stopPropagation: () => {} };
-                    closeVideo(fakeEvent);
+                    }, 300);
                 }
             }
         });
@@ -999,14 +758,11 @@
         const navbar = document.querySelector('.navbar');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
+                navbar.style.boxShadow = '0 2px 15px rgba(0,0,0,0.1)';
             } else {
-                navbar.classList.remove('scrolled');
+                navbar.style.boxShadow = 'none';
             }
         });
-
-        // Smooth scroll behavior
-        document.documentElement.style.scrollBehavior = 'smooth';
     </script>
 </body>
 </html>
