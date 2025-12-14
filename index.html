@@ -12,45 +12,42 @@
         }
 
         :root {
-            --primary-color: #2c2c2c;
-            --secondary-color: #7a7a7a;
-            --bg-color: #f0f0f0;
-            --white: #ffffff;
+            --primary-color: #1a1a1a;
+            --secondary-color: #666666;
+            --bg-color: #ffffff;
+            --off-white: #f8f8f8;
             --border-color: #e0e0e0;
-            --accent-color: #5a5a5a;
+            --accent-color: #000000;
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         body {
-            font-family: 'Georgia', serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
             color: var(--primary-color);
             background-color: var(--bg-color);
-            line-height: 1.8;
+            line-height: 1.7;
             overflow-x: hidden;
         }
 
-        /* Navigation */
         .navbar {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            background-color: var(--white);
+            background-color: var(--bg-color);
             padding: 1.5rem 3rem;
             z-index: 999;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border-bottom: 1px solid var(--border-color);
             opacity: 0;
             animation: slideDown 0.6s ease forwards;
         }
 
         @keyframes slideDown {
-            to {
-                opacity: 1;
-            }
+            to { opacity: 1; }
         }
 
         .nav-content {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
@@ -58,47 +55,45 @@
         }
 
         .site-logo {
-            font-size: 1rem;
-            font-weight: 400;
-            letter-spacing: 1px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
             color: var(--primary-color);
+            text-transform: uppercase;
         }
 
         .nav-menu {
             list-style: none;
             display: flex;
-            gap: 3rem;
+            gap: 2rem;
         }
 
         .nav-link {
             text-decoration: none;
             color: var(--secondary-color);
             font-size: 0.85rem;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
             font-weight: 400;
-            position: relative;
             transition: var(--transition);
-            font-family: 'Arial', sans-serif;
         }
 
         .nav-link:hover {
             color: var(--primary-color);
         }
 
-        /* Hero Section */
         .hero {
-            height: 50vh;
+            min-height: 60vh;
             display: flex;
             align-items: center;
-            justify-content: center
-            background: url('img/psych.jpg') center/cover no-repeat;
+            justify-content: center;
             margin-top: 70px;
-            position: relative;
-            overflow: hidden;
+            padding: 4rem 3rem;
+            background-color: var(--off-white);
         }
 
         .hero-content {
-            text-align: center;
+            max-width: 800px;
+            text-align: left;
             opacity: 0;
             transform: translateY(30px);
             animation: fadeInUp 1s ease 0.3s forwards;
@@ -111,57 +106,38 @@
             }
         }
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-            animation: rotate 20s linear infinite;
-        }
-
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
         .site-title {
-            font-size: 3rem;
-            letter-spacing: 4px;
+            font-size: 4rem;
+            letter-spacing: -2px;
             font-weight: 300;
-            margin-bottom: 1rem;
-            font-family: 'Arial', sans-serif;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            color: var(--primary-color);
         }
 
         .site-subtitle {
-            font-size: 1rem;
-            letter-spacing: 2px;
+            font-size: 1.1rem;
+            letter-spacing: 0;
             color: var(--secondary-color);
-            font-style: italic;
+            font-weight: 400;
         }
 
-        /* Cards Container */
         .cards-container {
-            max-width: 1400px;
-            margin: 4rem auto;
-            padding: 0 3rem;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 3rem;
         }
 
-        /* Card */
         .concept-card {
-            background-color: var(--white);
+            background-color: var(--bg-color);
             cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
-            overflow: hidden;
+            transition: all 0.3s ease;
+            margin-bottom: 4rem;
             opacity: 0;
-            transform: translateY(50px);
+            transform: translateY(30px);
             animation: fadeInUp 0.8s ease forwards;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 4rem;
         }
 
         .concept-card:nth-child(1) { animation-delay: 0.1s; }
@@ -170,20 +146,29 @@
         .concept-card:nth-child(4) { animation-delay: 0.4s; }
         .concept-card:nth-child(5) { animation-delay: 0.5s; }
 
+        .concept-card:last-child {
+            border-bottom: none;
+        }
+
         .concept-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            transform: translateX(10px);
+        }
+
+        .card-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
         }
 
         .card-image {
             width: 100%;
-            height: 250px;
-            background: linear-gradient(135deg, #e8e8e8 0%, #f5f5f5 100%);
+            height: 500px;
+            background: var(--off-white);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 4rem;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
         }
@@ -192,80 +177,66 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .card-image::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
-            transform: rotate(45deg);
             transition: all 0.6s ease;
-            z-index: 1;
-        }
-
-        .concept-card:hover .card-image {
-            transform: scale(1.1);
-        }
-
-        .concept-card:hover .card-image::before {
-            left: 100%;
+            filter: grayscale(100%);
         }
 
         .concept-card:hover .card-image img {
-            transform: scale(1.15);
-        }
-
-        .card-image span {
-            position: relative;
-            z-index: 2;
-            transition: transform 0.3s ease;
-        }
-
-        .concept-card:hover .card-image span {
-            transform: scale(1.2) rotate(5deg);
+            transform: scale(1.05);
+            filter: grayscale(0%);
         }
 
         .card-content {
-            padding: 2rem;
-            transition: all 0.3s ease;
-        }
-
-        .concept-card:hover .card-content {
-            transform: translateY(-5px);
-        }
-
-        .card-title {
-            font-size: 1.5rem;
-            letter-spacing: 1px;
-            margin-bottom: 0.5rem;
-            font-weight: 400;
-            font-family: 'Arial', sans-serif;
-            transition: color 0.3s ease;
-        }
-
-        .concept-card:hover .card-title {
-            color: var(--accent-color);
+            padding: 2rem 0;
         }
 
         .card-meta {
             font-size: 0.75rem;
             color: var(--secondary-color);
             margin-bottom: 1rem;
-            font-style: italic;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
         }
 
-        .card-preview {
-            font-size: 0.95rem;
-            line-height: 1.7;
+        .card-title {
+            font-size: 2.5rem;
+            letter-spacing: -1px;
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+            line-height: 1.2;
+            transition: color 0.3s ease;
+        }
+
+        .concept-card:hover .card-title {
             color: var(--secondary-color);
         }
 
-        /* Modal */
+        .card-preview {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .read-more {
+            display: inline-block;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .read-more:hover {
+            border-bottom-color: var(--secondary-color);
+            color: var(--secondary-color);
+        }
+
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -289,18 +260,16 @@
         }
 
         .modal {
-            background-color: var(--white);
-            max-width: 1000px;
+            background-color: var(--bg-color);
+            max-width: 900px;
             width: 100%;
             max-height: 90vh;
             overflow-y: auto;
             position: relative;
-            transform: scale(0.8) translateY(50px);
+            transform: scale(0.95) translateY(20px);
             opacity: 0;
-            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
-            display: flex;
-            flex-direction: column;
+            transition: all 0.4s ease;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
         }
 
         .modal-overlay.active .modal {
@@ -310,12 +279,11 @@
 
         .modal-header-image {
             width: 100%;
-            height: 500px;
-            background: linear-gradient(135deg, #e8e8e8 0%, #f5f5f5 100%);
+            height: 400px;
+            background: var(--off-white);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 8rem;
             position: relative;
             overflow: hidden;
         }
@@ -324,33 +292,16 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-        }
-
-        .modal-header-image::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
-            animation: pulse 3s ease-in-out infinite;
-            z-index: 1;
-        }
-
-        .modal-header-image span {
-            position: relative;
-            z-index: 2;
-            animation: float 3s ease-in-out infinite;
+            filter: grayscale(50%);
         }
 
         .modal-close {
             position: absolute;
-            top: 2rem;
-            right: 2rem;
-            background: var(--primary-color);
-            color: var(--white);
-            border: none;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: var(--bg-color);
+            color: var(--primary-color);
+            border: 1px solid var(--border-color);
             width: 40px;
             height: 40px;
             border-radius: 50%;
@@ -359,102 +310,72 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transition: all 0.3s ease;
             z-index: 10;
         }
 
         .modal-close:hover {
-            background: var(--accent-color);
-            transform: rotate(90deg) scale(1.1);
+            background: var(--primary-color);
+            color: var(--bg-color);
+            transform: rotate(90deg);
         }
 
-        .modal-close:active {
-            transform: rotate(90deg) scale(0.9);
+        .resource-links {
+            display: flex;
+            gap: 1rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
         }
 
-        .modal-layout {
-            display: block;
-        }
-
-        .modal-image {
-            display: none;
-        }
-
-        .wiki-link {
-            position: static;
+        .resource-link {
             display: inline-block;
-            margin: 2rem auto 0;
-            transform: none;
-            background: var(--white);
+            background: transparent;
             color: var(--primary-color);
-            padding: 0.8rem 2rem;
+            padding: 0.8rem 1.5rem;
             text-decoration: none;
             font-size: 0.85rem;
-            letter-spacing: 1px;
-            font-family: 'Arial', sans-serif;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-            position: relative;
-            overflow: hidden;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
             border: 2px solid var(--primary-color);
         }
 
-        .wiki-link::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
+        .resource-link:hover {
             background: var(--primary-color);
-            transition: all 0.3s ease;
-            z-index: -1;
+            color: var(--bg-color);
         }
 
-        .wiki-link:hover {
-            color: var(--white);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        .resource-link.secondary {
+            border-color: var(--secondary-color);
+            color: var(--secondary-color);
         }
 
-        .wiki-link:hover::before {
-            left: 0;
-        }
-
-        .wiki-link-wrapper {
-            text-align: center;
+        .resource-link.secondary:hover {
+            background: var(--secondary-color);
+            color: var(--bg-color);
         }
 
         .modal-content {
-            padding: 3rem;
+            padding: 3rem 4rem;
             overflow-y: auto;
-            animation: slideInUp 0.5s ease 0.2s backwards;
-        }
-
-        @keyframes slideInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
 
         .modal-title {
-            font-size: 2rem;
+            font-size: 2.5rem;
             letter-spacing: -1px;
             margin-bottom: 0.5rem;
-            font-weight: 400;
+            font-weight: 300;
             line-height: 1.2;
         }
 
         .modal-meta {
-            font-size: 0.85rem;
+            font-size: 0.75rem;
             color: var(--secondary-color);
-            margin-bottom: 2rem;
-            font-style: italic;
+            margin-bottom: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
         }
 
         .modal-section {
@@ -462,26 +383,23 @@
         }
 
         .modal-section h3 {
-            font-size: 0.75rem;
-            letter-spacing: 2px;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
             text-transform: uppercase;
             margin-bottom: 1rem;
-            color: var(--accent-color);
-            font-family: 'Arial', sans-serif;
-            border-bottom: 2px solid var(--primary-color);
-            padding-bottom: 0.5rem;
+            color: var(--primary-color);
+            font-weight: 600;
         }
 
         .modal-section p {
-            font-size: 0.95rem;
-            line-height: 1.9;
-            color: var(--primary-color);
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--secondary-color);
         }
 
-        /* Footer */
         .footer {
             background-color: var(--primary-color);
-            color: var(--white);
+            color: var(--bg-color);
             text-align: center;
             padding: 3rem 2rem;
             margin-top: 4rem;
@@ -493,101 +411,6 @@
             margin: 0.5rem 0;
         }
 
-        /* Contact Section */
-        .contact-section {
-            background-color: var(--white);
-            padding: 4rem 3rem;
-            margin: 4rem auto;
-            max-width: 800px;
-            text-align: center;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
-            opacity: 0;
-            animation: fadeInUp 0.8s ease 0.7s forwards;
-        }
-
-        .contact-title {
-            font-size: 2rem;
-            letter-spacing: 2px;
-            margin-bottom: 1rem;
-            font-weight: 300;
-            font-family: 'Arial', sans-serif;
-        }
-
-        .contact-subtitle {
-            font-size: 1rem;
-            color: var(--secondary-color);
-            margin-bottom: 2.5rem;
-            line-height: 1.8;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .social-link {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 1rem 2rem;
-            background-color: var(--bg-color);
-            text-decoration: none;
-            color: var(--primary-color);
-            border-radius: 50px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            font-family: 'Arial', sans-serif;
-            letter-spacing: 0.5px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .social-link::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, #E1306C, #C13584);
-            transition: left 0.4s ease;
-            z-index: 0;
-        }
-
-        .social-link.facebook::before {
-            background: linear-gradient(90deg, #1877F2, #0C63D4);
-        }
-
-        .social-link:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            color: var(--white);
-        }
-
-        .social-link:hover::before {
-            left: 0;
-        }
-
-        .social-link span {
-            position: relative;
-            z-index: 1;
-        }
-
-        .social-icon {
-            width: 24px;
-            height: 24px;
-            font-size: 1.5rem;
-            position: relative;
-            z-index: 1;
-            transition: transform 0.3s ease;
-        }
-
-        .social-link:hover .social-icon {
-            transform: scale(1.2) rotate(5deg);
-        }
-
-        /* Scrollbar for modal */
         .modal::-webkit-scrollbar {
             width: 8px;
         }
@@ -605,51 +428,55 @@
             background: var(--primary-color);
         }
 
-        /* Responsive Design */
         @media (max-width: 1024px) {
-            .modal-layout {
-                display: block;
+            .card-layout {
+                grid-template-columns: 1fr;
+                gap: 2rem;
             }
-
             .modal-header-image {
-                height: 400px;
-                font-size: 6rem;
+                height: 350px;
             }
-
-            .cards-container {
-                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            .modal-content {
+                padding: 2.5rem 3rem;
             }
         }
 
         @media (max-width: 768px) {
             .cards-container {
-                padding: 0 1.5rem;
-                grid-template-columns: 1fr;
+                padding: 2rem 1.5rem;
             }
-
             .site-title {
+                font-size: 2.5rem;
+            }
+            .card-title {
                 font-size: 2rem;
             }
-
             .modal-content {
                 padding: 2rem;
             }
-
             .modal-title {
-                font-size: 1.5rem;
+                font-size: 2rem;
             }
-
             .modal-header-image {
-                height: 300px;
-                font-size: 5rem;
+                height: 250px;
             }
-
             .nav-menu {
                 gap: 1.5rem;
             }
-
             .navbar {
                 padding: 1rem 1.5rem;
+            }
+            .hero {
+                padding: 3rem 1.5rem;
+            }
+            .card-image {
+                height: 350px;
+            }
+            .resource-links {
+                flex-direction: column;
+            }
+            .resource-link {
+                text-align: center;
             }
         }
     </style>
@@ -657,7 +484,7 @@
 <body>
     <nav class="navbar">
         <div class="nav-content">
-            <div class="site-logo">Psychology Insights</div>
+            <div class="site-logo">Psychology </div>
             <ul class="nav-menu">
                 <li><a href="#home" class="nav-link">Home</a></li>
                 <li><a href="#concepts" class="nav-link">Concepts</a></li>
@@ -667,240 +494,209 @@
 
     <header class="hero" id="home">
         <div class="hero-content">
-            <h1 class="site-title">PSYCHOLOGY INSIGHTS</h1>
+            <h1 class="site-title">PSYCHOLOGY </h1>
             <p class="site-subtitle">Exploring the Mind Through PSY101</p>
         </div>
     </header>
 
     <main class="cards-container" id="concepts">
-        <!-- Card 1 -->
         <div class="concept-card" onclick="openModal('modal1')">
-            <div class="card-image">
-                <img src="img/unnamed.jpg" alt="Classical Conditioning">
-            </div>
-            <div class="card-content">
-                <h2 class="card-title">Classical Conditioning</h2>
-                <div class="card-meta">Module 5 | Learning Through Association</div>
-                <p class="card-preview">Classical conditioning is a learning process where a neutral stimulus becomes associated with a meaningful stimulus, resulting in a learned response. Pavlov's famous experiment with dogs demonstrated this principle...</p>
+            <div class="card-layout">
+                <div class="card-image">
+                    <img src="img/unnamed.jpg" alt="Classical Conditioning">
+                </div>
+                <div class="card-content">
+                    <div class="card-meta">Module 5 | Learning Through Association</div>
+                    <h2 class="card-title">Classical Conditioning</h2>
+                    <p class="card-preview">Classical conditioning is a learning process where a neutral stimulus becomes associated with a meaningful stimulus, resulting in a learned response. Pavlov's famous experiment with dogs demonstrated this principle...</p>
+                    <span class="read-more">Read Full Article →</span>
+                </div>
             </div>
         </div>
 
-        <!-- Card 2 -->
         <div class="concept-card" onclick="openModal('modal2')">
-            <div class="card-image">
-                <img src="img/Memory Loss.jpg" alt="Classical Conditioning">
-            </div>
-            <div class="card-content">
-                <h2 class="card-title">Anterograde Amnesia</h2>
-                <div class="card-meta">Module 6 | Memory Formation</div>
-                <p class="card-preview">Anterograde amnesia is a condition where a person loses the ability to form new memories after brain trauma or injury. The hippocampus plays a crucial role in this process...</p>
+            <div class="card-layout">
+                <div class="card-content">
+                    <div class="card-meta">Module 6 | Memory Formation</div>
+                    <h2 class="card-title">Anterograde Amnesia</h2>
+                    <p class="card-preview">Anterograde amnesia is a condition where a person loses the ability to form new memories after brain trauma or injury. The hippocampus plays a crucial role in this process...</p>
+                    <span class="read-more">Read Full Article →</span>
+                </div>
+                <div class="card-image">
+                    <img src="img/Memory Loss.jpg" alt="Anterograde Amnesia">
+                </div>
             </div>
         </div>
 
-        <!-- Card 3 -->
         <div class="concept-card" onclick="openModal('modal3')">
-            <div class="card-image">
-                <img src="img/attachmentadult.jpg" alt="Classical Conditioning">
-            </div>
-            <div class="card-content">
-                <h2 class="card-title">Adult Attachment Style</h2>
-                <div class="card-meta">Module 7 | Relationships & Connection</div>
-                <p class="card-preview">The adult attachment style, particularly anxious attachment, is characterized by fear of abandonment and need for reassurance. Early childhood experiences shape how we form relationships...</p>
+            <div class="card-layout">
+                <div class="card-image">
+                    <img src="img/attachmentadult.jpg" alt="Adult Attachment">
+                </div>
+                <div class="card-content">
+                    <div class="card-meta">Module 7 | Relationships & Connection</div>
+                    <h2 class="card-title">Adult Attachment Style</h2>
+                    <p class="card-preview">The adult attachment style, particularly anxious attachment, is characterized by fear of abandonment and need for reassurance. Early childhood experiences shape how we form relationships...</p>
+                    <span class="read-more">Read Full Article →</span>
+                </div>
             </div>
         </div>
 
-        <!-- Card 4 -->
         <div class="concept-card" onclick="openModal('modal4')">
-            <div class="card-image">
-                <img src="img/eustress.jpg" alt="Classical Conditioning">
-            </div>
-            <div class="card-content">
-                <h2 class="card-title">Eustress</h2>
-                <div class="card-meta">Module 8 | Positive Stress</div>
-                <p class="card-preview">Eustress refers to the positive form of stress that can motivate and improve performance. Unlike distress, eustress occurs when challenges feel manageable and can enhance our abilities...</p>
+            <div class="card-layout">
+                <div class="card-content">
+                    <div class="card-meta">Module 8 | Positive Stress</div>
+                    <h2 class="card-title">Eustress</h2>
+                    <p class="card-preview">Eustress refers to the positive form of stress that can motivate and improve performance. Unlike distress, eustress occurs when challenges feel manageable and can enhance our abilities...</p>
+                    <span class="read-more">Read Full Article →</span>
+                </div>
+                <div class="card-image">
+                    <img src="img/597599742_2305883256584224_4404609709458550119_n.jpg" alt="Eustress">
+                </div>
             </div>
         </div>
 
-        <!-- Card 5 -->
         <div class="concept-card" onclick="openModal('modal5')">
-            <div class="card-image">
-                <img src="img/specificphobia.jpg" alt="Classical Conditioning">
-            </div>
-            <div class="card-content">
-                <h2 class="card-title">Specific Phobia</h2>
-                <div class="card-meta">Module 9/10 | Understanding Fear</div>
-                <p class="card-preview">A specific phobia is an intense, irrational fear of a particular object or situation. These phobias often develop through classical conditioning and can significantly impact daily life...</p>
+            <div class="card-layout">
+                <div class="card-image">
+                    <img src="img/specificphobia.jpg" alt="Specific Phobia">
+                </div>
+                <div class="card-content">
+                    <div class="card-meta">Module 9 | Understanding Fear</div>
+                    <h2 class="card-title">Specific Phobia</h2>
+                    <p class="card-preview">A specific phobia is an intense, irrational fear of a particular object or situation. These phobias often develop through classical conditioning and can significantly impact daily life...</p>
+                    <span class="read-more">Read Full Article →</span>
+                </div>
             </div>
         </div>
     </main>
 
-    <!-- Modal 1 -->
     <div class="modal-overlay" id="modal1" onclick="closeModal('modal1', event)">
         <div class="modal" onclick="event.stopPropagation()">
             <button class="modal-close" onclick="closeModal('modal1', event)">×</button>
-            
             <div class="modal-header-image">
-                <!-- <img src="YOUR_IMAGE_URL" alt="Classical Conditioning"> -->
                 <img src="img/unnamed.jpg" alt="Classical Conditioning">
             </div>
-            
-            <div class="modal-layout">
-                <div class="modal-content">
-                    <h2 class="modal-title">Classical Conditioning</h2>
-                    <div class="modal-meta">Module 5 | Learning Through Association</div>
-                    
-                    <div class="modal-section">
-                        <h3>Description</h3>
-                        <p>One concept that I found fascinating from this module is Classical Conditioning. Early in the 20th century, Russian physiologist Ivan Pavlov introduced the concept of classical conditioning. In this famous experiment, Pavlov decided that he would ring a bell before feeding his dogs. After several repetitions, the dogs began to salivate just at the sound of the bell, even when no food was present. This shows that the dogs had learned to associate the neutral stimulus (the bell) with the unconditioned stimulus (the food), resulting in a conditioned response (salivation). In simple terms, classical conditioning is learning through association. It happens when a person or an animal starts to connect a neutral stimulus with something that naturally would cause a response. Over time, the neutral stimulus alone can trigger the same response. </p>
-                    </div>
-
-                    <div class="modal-section">
-                        <h3>What I've Learned</h3>
-                        <p> this concept helped me better understand my habits and behavior. For example, I realized that whenever I hear the notification sound from my phone, I would stop whatever I'm doing. I realized that over time, I've associated the notification sound on my phone to be something important. Just like in Pavlov's experiment, I've associated a specific sound to an important thing that will happen. Realizing this helped me change my lifestyle. I have tried to not pay attention to my phone notification. This also made me realize that certain sounds or environments may unconsciously influence our decision, behavior, or emotions in life. </p>
-                    </div>
-                    
-                    <div class="wiki-link-wrapper">
-                        <a href="https://en.wikipedia.org/wiki/Classical_conditioning" target="_blank" class="wiki-link">Learn More on Wikipedia</a>
-                    </div>
+            <div class="modal-content">
+                <h2 class="modal-title">Classical Conditioning</h2>
+                <div class="modal-meta">Module 5 | Learning Through Association</div>
+                <div class="modal-section">
+                    <h3>Description</h3>
+                    <p>One concept that I found fascinating from this module is Classical Conditioning. Early in the 20th century, Russian physiologist Ivan Pavlov introduced the concept of classical conditioning. In this famous experiment, Pavlov decided that he would ring a bell before feeding his dogs. After several repetitions, the dogs began to salivate just at the sound of the bell, even when no food was present. This shows that the dogs had learned to associate the neutral stimulus (the bell) with the unconditioned stimulus (the food), resulting in a conditioned response (salivation). In simple terms, classical conditioning is learning through association. It happens when a person or an animal starts to connect a neutral stimulus with something that naturally would cause a response. Over time, the neutral stimulus alone can trigger the same response.</p>
+                </div>
+                <div class="modal-section">
+                    <h3>What I've Learned</h3>
+                    <p>This concept helped me better understand my habits and behavior. For example, I realized that whenever I hear the notification sound from my phone, I would stop whatever I'm doing. I realized that over time, I've associated the notification sound on my phone to be something important. Just like in Pavlov's experiment, I've associated a specific sound to an important thing that will happen. Realizing this helped me change my lifestyle. I have tried to not pay attention to my phone notification. This also made me realize that certain sounds or environments may unconsciously influence our decision, behavior, or emotions in life.</p>
+                </div>
+                <div class="resource-links">
+                    <a href="https://en.wikipedia.org/wiki/Classical_conditioning" target="_blank" class="resource-link">Wikipedia Article</a>
+                    <a href="img/cardboard.mp4" target="_blank" class="resource-link secondary">Watch Video</a>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Modal 2 -->
     <div class="modal-overlay" id="modal2" onclick="closeModal('modal2', event)">
         <div class="modal" onclick="event.stopPropagation()">
             <button class="modal-close" onclick="closeModal('modal2', event)">×</button>
-            
             <div class="modal-header-image">
-                <!-- <img src="YOUR_IMAGE_URL" alt="Anterograde Amnesia"> -->
-                <img src="img/Memory Loss.jpg" alt="Classical Conditioning">
+                <img src="img/Memory Loss.jpg" alt="Anterograde Amnesia">
             </div>
-            
-            <div class="modal-layout">
-                <div class="modal-content">
-                    <h2 class="modal-title">Anterograde Amnesia</h2>
-                    <div class="modal-meta">Module 6 | Memory Formation</div>
-                    
-                    <div class="modal-section">
-                        <h3>Description</h3>
-                        <p>One concept that I found interesting in this week’s module is Anterograde amnesia. Anterograde amnesia is a condition where a person loses the ability to form new memories after a trauma or injury is inflicted on the brain. This means that even though the person can remember events that happened before the injury or traumatic event, they cannot store any new explicit long-term memories (semantic or episodic). This happens when the hippocampus gets damaged. The hippocampus is responsible for making short-term memories into long-term memories.</p>
-                    </div>
-
-                    <div class="modal-section">
-                        <h3>What I've Learned</h3>
-                        <p>Learning about this condition has made me more empathetic towards people who suffer from it. It made me realize how sensitive and complex our brain truly is. This concept made me understand older people who suffer from this condition better. It changes how I interact with my grandmother, who suffers from Alzheimer’s disease. It might be a different condition compared to anterograde amnesia, but it has some similar symptoms, such as the hippocampus beginning to lose more cells as the disorder progresses. This helps me understand how they’re simply trying their best whenever they cannot interact with us properly. I learned to be patient and understanding whenever I talk to them. Learning about this condition has also helped me exercise my brain to help me in the future. It motivated me to take better care of my body and to prioritize my mental health.</p>
-                    </div>
-                    
-                    <div class="wiki-link-wrapper">
-                        <a href="https://en.wikipedia.org/wiki/Anterograde_amnesia" target="_blank" class="wiki-link">Learn More on Wikipedia</a>
-                    </div>
+            <div class="modal-content">
+                <h2 class="modal-title">Anterograde Amnesia</h2>
+                <div class="modal-meta">Module 6 | Memory Formation</div>
+                <div class="modal-section">
+                    <h3>Description</h3>
+                    <p>One concept that I found interesting in this week's module is Anterograde amnesia. Anterograde amnesia is a condition where a person loses the ability to form new memories after a trauma or injury is inflicted on the brain. This means that even though the person can remember events that happened before the injury or traumatic event, they cannot store any new explicit long-term memories (semantic or episodic). This happens when the hippocampus gets damaged. The hippocampus is responsible for making short-term memories into long-term memories.</p>
+                </div>
+                <div class="modal-section">
+                    <h3>What I've Learned</h3>
+                    <p>Learning about this condition has made me more empathetic towards people who suffer from it. It made me realize how sensitive and complex our brain truly is. This concept made me understand older people who suffer from this condition better. It changes how I interact with my grandmother, who suffers from Alzheimer's disease. It might be a different condition compared to anterograde amnesia, but it has some similar symptoms, such as the hippocampus beginning to lose more cells as the disorder progresses. This helps me understand how they're simply trying their best whenever they cannot interact with us properly. I learned to be patient and understanding whenever I talk to them. Learning about this condition has also helped me exercise my brain to help me in the future. It motivated me to take better care of my body and to prioritize my mental health.</p>
+                </div>
+                <div class="resource-links">
+                    <a href="https://en.wikipedia.org/wiki/Anterograde_amnesia" target="_blank" class="resource-link">Wikipedia Article</a>
+                    <a href="https://www.brainhq.com/why-brainhq/about-the-brainhq-exercises/memory/" target="_blank" class="resource-link secondary">BrainHQ Exercises</a>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Modal 3 -->
     <div class="modal-overlay" id="modal3" onclick="closeModal('modal3', event)">
         <div class="modal" onclick="event.stopPropagation()">
             <button class="modal-close" onclick="closeModal('modal3', event)">×</button>
-            
             <div class="modal-header-image">
-                <!-- <img src="YOUR_IMAGE_URL" alt="Adult Attachment Style"> -->
-                <img src="img/attachmentadult.jpg" alt="Classical Conditioning">
+                <img src="img/attachmentadult.jpg" alt="Adult Attachment Style">
             </div>
-            
-            <div class="modal-layout">
-                <div class="modal-content">
-                    <h2 class="modal-title">Adult Attachment Style</h2>
-                    <div class="modal-meta">Module 7 | Relationships & Connection</div>
-                    
-                    <div class="modal-section">
-                        <h3>Description</h3>
-                        <p> One concept that I found myself heavily interested and resonated with is the adult attachment style, specifically the anxious attachment style. The fundamentals of the anxious attachment style was developed by John Bowlby. Bowlby proposed that early childhood experiences form the foundation for how a person will form relationships later in life. However, Mary Ainsworth was the one who expanded on his work by creating a laboratory procedure for measuring infant attachment styles. In adulthood, attachment anxiety is characterized by having a fear of abandonment, need for reassurance, and having difficulty with trust. This attachment style stems from an internal working model shaped in childhood. For individuals with an anxious attachment style, this internal model typically includes low avoidance. This means that they generally trust that others can be supportive. It also includes high anxiety, which reflects lower feelings of self-worth and they worry that they might not be enough to keep others close.</p>
-                    </div>
-
-                    <div class="modal-section">
-                        <h3>What I've Learned</h3>
-                        <p>Learning about anxious attachment helped me understand myself and other people’s reactions/actions in relationships. For example, I would always worry whenever a person would take too long to text me back, because I would assume that they are upset with me. This made me realize that I worry too much because of my need for constant reassurance. Learning about this concept made me self-reflect and better understand my emotions. I realized that I need to communicate and that having space/independence in a relationship is healthy. In addition to this, It made me understand that those people with the same attachment style as me need better regulation with their emotions. This concept has helped me recognize emotional patterns and how to feel more secure with others. </p>
-                    </div>
-                    
-                    <div class="wiki-link-wrapper">
-                        <a href="https://en.wikipedia.org/wiki/Attachment_in_adults" target="_blank" class="wiki-link">Learn More on Wikipedia</a>
-                    </div>
+            <div class="modal-content">
+                <h2 class="modal-title">Adult Attachment Style</h2>
+                <div class="modal-meta">Module 7 | Relationships & Connection</div>
+                <div class="modal-section">
+                    <h3>Description</h3>
+                    <p>One concept that I found myself heavily interested and resonated with is the adult attachment style, specifically the anxious attachment style. The fundamentals of the anxious attachment style was developed by John Bowlby. Bowlby proposed that early childhood experiences form the foundation for how a person will form relationships later in life. However, Mary Ainsworth was the one who expanded on his work by creating a laboratory procedure for measuring infant attachment styles. In adulthood, attachment anxiety is characterized by having a fear of abandonment, need for reassurance, and having difficulty with trust. This attachment style stems from an internal working model shaped in childhood. For individuals with an anxious attachment style, this internal model typically includes low avoidance. This means that they generally trust that others can be supportive. It also includes high anxiety, which reflects lower feelings of self-worth and they worry that they might not be enough to keep others close.</p>
+                </div>
+                <div class="modal-section">
+                    <h3>What I've Learned</h3>
+                    <p>Learning about anxious attachment helped me understand myself and other people's reactions/actions in relationships. For example, I would always worry whenever a person would take too long to text me back, because I would assume that they are upset with me. This made me realize that I worry too much because of my need for constant reassurance. Learning about this concept made me self-reflect and better understand my emotions. I realized that I need to communicate and that having space/independence in a relationship is healthy. In addition to this, It made me understand that those people with the same attachment style as me need better regulation with their emotions. This concept has helped me recognize emotional patterns and how to feel more secure with others.</p>
+                </div>
+                <div class="resource-links">
+                    <a href="https://en.wikipedia.org/wiki/Attachment_in_adults" target="_blank" class="resource-link">Wikipedia Article</a>
+                    <a href="https://openpsychometrics.org/tests/ECR.php" target="_blank" class="resource-link secondary">Attachment Style Test</a>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Modal 4 -->
     <div class="modal-overlay" id="modal4" onclick="closeModal('modal4', event)">
         <div class="modal" onclick="event.stopPropagation()">
             <button class="modal-close" onclick="closeModal('modal4', event)">×</button>
-            
             <div class="modal-header-image">
-                <!-- <img src="YOUR_IMAGE_URL" alt="Eustress"> -->
-                <img src="img/eustress.jpg" alt="Classical Conditioning">
+                <img src="img/597599742_2305883256584224_4404609709458550119_n.jpg" alt="Eustress">
             </div>
-            
-            <div class="modal-layout">
-                <div class="modal-content">
-                    <h2 class="modal-title">Eustress</h2>
-                    <div class="modal-meta">Module 8 | Positive Stress</div>
-                    
-                    <div class="modal-section">
-                        <h3>Description</h3>
-                        <p>Eustress refers to the positive form of stress that can motivate a person and improve performance. Unlike distress (the stress that people commonly know as negative), eustress occurs when a person perceives a task or challenge to be manageable and feels capable of handling it. Eustress activates the body's stress response in a way that increases a person's motivation, energy, and performance without leading to negative emotional effects. For example, feeling nervous before a test or a job interview can enhance concentration, which helps people do their best work.</p>
-                    </div>
-
-                    <div class="modal-section">
-                        <h3>What I've Learned</h3>
-                        <p> Learning about this topic helped me realize that stress can be good for us. I used to believe and think that all stress is bad, but this topic made me realize that stress can help us improve and grow as a person. For example, I realized that whenever I get nervous or anxious about an upcoming test or due date, I can now recognize that it is Eustress pushing me to prepare for it. Additionally, this has helped me view stress in a different way. I now understand that seeing stressful situations as an opportunity for improvement, rather than failure, has made me feel more confident when facing a situation.</p>
-                    </div>
-                    
-                    <div class="wiki-link-wrapper">
-                        <a href="https://en.wikipedia.org/wiki/Eustress" target="_blank" class="wiki-link">Learn More on Wikipedia</a>
-                    </div>
+            <div class="modal-content">
+                <h2 class="modal-title">Eustress</h2>
+                <div class="modal-meta">Module 8 | Positive Stress</div>
+                <div class="modal-section">
+                    <h3>Description</h3>
+                    <p>Eustress refers to the positive form of stress that can motivate a person and improve performance. Unlike distress (the stress that people commonly know as negative), eustress occurs when a person perceives a task or challenge to be manageable and feels capable of handling it. Eustress activates the body's stress response in a way that increases a person's motivation, energy, and performance without leading to negative emotional effects. For example, feeling nervous before a test or a job interview can enhance concentration, which helps people do their best work.</p>
+                </div>
+                <div class="modal-section">
+                    <h3>What I've Learned</h3>
+                    <p>Learning about this topic helped me realize that stress can be good for us. I used to believe and think that all stress is bad, but this topic made me realize that stress can help us improve and grow as a person. For example, I realized that whenever I get nervous or anxious about an upcoming test or due date, I can now recognize that it is Eustress pushing me to prepare for it. Additionally, this has helped me view stress in a different way. I now understand that seeing stressful situations as an opportunity for improvement, rather than failure, has made me feel more confident when facing a situation.</p>
+                </div>
+                <div class="resource-links">
+                    <a href="https://en.wikipedia.org/wiki/Eustress" target="_blank" class="resource-link">Wikipedia Article</a>
+                    <a href="https://screening.mhanational.org/screening-tools/anxiety/?layout=actions_b" target="_blank" class="resource-link secondary">Anxiety Screening Tool</a>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Modal 5 -->
     <div class="modal-overlay" id="modal5" onclick="closeModal('modal5', event)">
         <div class="modal" onclick="event.stopPropagation()">
             <button class="modal-close" onclick="closeModal('modal5', event)">×</button>
-            
             <div class="modal-header-image">
-                <!-- <img src="YOUR_IMAGE_URL" alt="Specific Phobia"> -->
-                <img src="img/specificphobia.jpg" alt="Classical Conditioning">
+                <img src="img/specificphobia.jpg" alt="Specific Phobia">
             </div>
-            
-            <div class="modal-layout">
-                <div class="modal-content">
-                    <h2 class="modal-title">Specific Phobia</h2>
-                    <div class="modal-meta">Module 9/10 | Understanding Fear</div>
-                    
-                    <div class="modal-section">
-                        <h3>Description</h3>
-                        <p>One concept in Module 9/10 that I found interesting and that really helped deepen my understanding of human behavior is Specific Phobia. A specific phobia is an intense, irrational fear or anxiety of a particular object or situation. Psychologists explain that specific phobias are often developed through classical conditioning, vicarious learning, and verbal transmission of information. What makes this different toward a normal fear is that the fear they experience from a particular object or situation poses little or no danger at all. However, most individuals with specific phobias are aware that their anxiety is irrational.  For example, a harmless object is involved/associated with a frightening experience, a child observes a person being scared of that specific object/situation, or is told that it is scary. To further add on, after association is learned, safety-seeking behaviors, usually avoidance, become stronger and persistent through negative reinforcement. Although specific phobias can be effectively healed primarily through Cognitive Behavior Therapy (CBT). Individuals with Specific Phobias are usually recommended to go through Exposure Therapy combined with other treatments. By slowly exposing the person to their feared object/situation in a safe and controlled way, it lessens their anxiety and changes their reaction to it.</p>
-                    </div>
-
-                    <div class="modal-section">
-                        <h3>What I've Learned</h3>
-                        <p>Learning about this concept helped me better understand both myself and other people around me. For example, I would judge people panicking or being scared of something small and think they are overreacting. After learning about specific phobias, I learned that something I don't find scary might be a big thing for another person and can affect their way of living. Understanding specific phobias also helped me figure out why I'm so scared of needles. Before learning about specific phobias, I would get so embarrassed of being scared of needles because I aspire to be a future nurse. Anyway, by understanding specific phobias, I learned to be more patient and compassionate with others.</p>
-                    </div>
-                    
-                    <div class="wiki-link-wrapper">
-                        <a href="https://en.wikipedia.org/wiki/Specific_phobia" target="_blank" class="wiki-link">Learn More on Wikipedia</a>
-                    </div>
+            <div class="modal-content">
+                <h2 class="modal-title">Specific Phobia</h2>
+                <div class="modal-meta">Module 9 | Understanding Fear</div>
+                <div class="modal-section">
+                    <h3>Description</h3>
+                    <p>One concept in Module 9 that I found interesting and that really helped deepen my understanding of human behavior is Specific Phobia. A specific phobia is an intense, irrational fear or anxiety of a particular object or situation. Psychologists explain that specific phobias are often developed through classical conditioning, vicarious learning, and verbal transmission of information. What makes this different toward a normal fear is that the fear they experience from a particular object or situation poses little or no danger at all. However, most individuals with specific phobias are aware that their anxiety is irrational. For example, a harmless object is involved/associated with a frightening experience, a child observes a person being scared of that specific object/situation, or is told that it is scary. To further add on, after association is learned, safety-seeking behaviors, usually avoidance, become stronger and persistent through negative reinforcement. Although specific phobias can be effectively healed primarily through Cognitive Behavior Therapy (CBT). Individuals with Specific Phobias are usually recommended to go through Exposure Therapy combined with other treatments. By slowly exposing the person to their feared object/situation in a safe and controlled way, it lessens their anxiety and changes their reaction to it.</p>
+                </div>
+                <div class="modal-section">
+                    <h3>What I've Learned</h3>
+                    <p>Learning about this concept helped me better understand both myself and other people around me. For example, I would judge people panicking or being scared of something small and think they are overreacting. After learning about specific phobias, I learned that something I don't find scary might be a big thing for another person and can affect their way of living. Understanding specific phobias also helped me figure out why I'm so scared of needles. Before learning about specific phobias, I would get so embarrassed of being scared of needles because I aspire to be a future nurse. Anyway, by understanding specific phobias, I learned to be more patient and compassionate with others.</p>
+                </div>
+                <div class="resource-links">
+                    <a href="https://en.wikipedia.org/wiki/Specific_phobia" target="_blank" class="resource-link">Wikipedia Article</a>
                 </div>
             </div>
         </div>
     </div>
 
     <footer class="footer">
-        <p>&copy; 2025 Psychology Insights | Princess Genevieve B. Eugenio</p>
+        <p>&copy; 2025 Psychology Honors | Princess Genevieve B. Eugenio</p>
         <p>PSY101 with Prof. Malamuth</p>
     </footer>
 
@@ -909,39 +705,29 @@
             const modal = document.getElementById(modalId);
             modal.classList.add('active');
             document.body.style.overflow = 'hidden';
-            
-            // Add stagger animation to modal content
-            const modalContent = modal.querySelector('.modal-content');
-            if (modalContent) {
-                modalContent.style.animation = 'slideInRight 0.5s ease 0.2s backwards';
-            }
         }
 
         function closeModal(modalId, event) {
             event.stopPropagation();
             const modal = document.getElementById(modalId);
-            
-            // Animate out
             const modalElement = modal.querySelector('.modal');
-            modalElement.style.transform = 'scale(0.8) translateY(50px)';
+            modalElement.style.transform = 'scale(0.95) translateY(20px)';
             modalElement.style.opacity = '0';
             
             setTimeout(() => {
                 modal.classList.remove('active');
                 document.body.style.overflow = 'auto';
-                // Reset transform
                 modalElement.style.transform = '';
                 modalElement.style.opacity = '';
             }, 300);
         }
 
-        // Close modal with Escape key
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Escape') {
                 const activeModal = document.querySelector('.modal-overlay.active');
                 if (activeModal) {
                     const modalElement = activeModal.querySelector('.modal');
-                    modalElement.style.transform = 'scale(0.8) translateY(50px)';
+                    modalElement.style.transform = 'scale(0.95) translateY(20px)';
                     modalElement.style.opacity = '0';
                     
                     setTimeout(() => {
@@ -954,21 +740,6 @@
             }
         });
 
-        // Add parallax effect on scroll
-        window.addEventListener('scroll', () => {
-            const scrolled = window.scrollY;
-            const cards = document.querySelectorAll('.concept-card');
-            
-            cards.forEach((card, index) => {
-                const speed = 0.5 + (index * 0.1);
-                const yPos = -(scrolled * speed / 100);
-                if (scrolled > 100) {
-                    card.style.transform = `translateY(${yPos}px)`;
-                }
-            });
-        });
-
-        // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -984,13 +755,12 @@
             });
         });
 
-        // Navbar shadow on scroll
         const navbar = document.querySelector('.navbar');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
                 navbar.style.boxShadow = '0 2px 15px rgba(0,0,0,0.1)';
             } else {
-                navbar.style.boxShadow = '0 2px 10px rgba(0,0,0,0.05)';
+                navbar.style.boxShadow = 'none';
             }
         });
     </script>
